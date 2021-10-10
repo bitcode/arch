@@ -1,3 +1,5 @@
+# Pre-Installation
+
 `lsblk` - for finding out which devices are present
 
 `gdisk /dev/{device}` - to get drive ready for installation
@@ -49,6 +51,43 @@ Same for /home partition
 
 root partition goes on /mnt 
 `mount /dev/nvme1n1p3 /mnt`
+
+create directories & mount boot
+`mkdir -p /mnt/boot/efi`
+
+then mount the boot drive 
+`mount /dev/nvme1n1p1 /mnt/boot/efi`
+
+create directory for the /home
+`mkdir /mnt/home`
+
+then mount the /home direcotry
+`mount /dev/nvme1n1p4 /mnt/home`
+
+we don't need to mount SWAP partition
+
+now `lsblk` to double check your mount points
+
+### Install Base Packages into the root mount ( /mnt )
+
+`pacstrap /mnt base linux linux-firmware git vim intel-ucode`
+
+## Generate FileSystem Table 
+
+`genfstab -U /mnt >> /mnt/etc/fstab`
+
+## Go into installation 
+
+`arch-chroot /mnt`
+
+look at fstab file with 
+`cat /etc/fstab` 
+
+## Download and run install script
+
+
+
+
 
 
 
