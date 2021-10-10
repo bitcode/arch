@@ -83,9 +83,15 @@ now `lsblk` to double check your mount points
 look at fstab file with 
 `cat /etc/fstab` 
 
+creat user
+`useradd --create-home bit`
+`passwd bit`
+`usermod -aG wheel bit`
+`visudo`
+
 ## Download and run install script
 
-
+`git clone https://github.com/bitcode/arch.git`
 
 
 
