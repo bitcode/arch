@@ -172,16 +172,60 @@ $ sudo pacman -Syyu --needed blackarch --overwrite='*'
 `cd nerd-font`
 `./install.sh`
 
-# 
+# NeoVim ( Install from build )
 
+`git clone https://github.com/neovim/neovim.git`
+`cd neovim`
+`make CMAKE_BUILD_TYPE=RelWithDebInfo`
+`sudo make install`
 
+# ZSH + OhMyZsh
 
+install zsh
+`sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
 
+To list all installed shells
+`chsh -l`
+set zsh as default
+`chsh -s path_to_zsh`
 
+### ZSH Plugins
 
+cd into `~/.oh-my-zsh/custom/plugins`
+install zsh-autosuggestions
+`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+Install zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+Install vim-mode
+`https://github.com/softmoth/zsh-vim-mode.git`
+
+### Tmux Plugin Manager TPM
+
+`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+install with prefix + I
+
+### Install PowerLovel10K
+
+`git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k`
+
+### Install Rust
+
+`curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+
+### Install ls-deluxe
+`cargo install --git https://github.com/Peltoche/lsd.git --branch master`
+
+### Install Vim Plug
+`sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'`
+
+### download and install dot files
+
+make sure ~/.config/nvim folder exists
+`git clone https://github.com/bitcode/dotfiles.git`
+stow zsh nvim tmux
 
  
-
 
 
 
