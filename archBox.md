@@ -121,6 +121,11 @@ to add rofi to dwm lets edit config.h
 and
 `{ MODKEY, XK_d, spawn, {.v = roficmd } },`
 
+download gruvbox theme
+git clone https://github.com/bardisty/gruvbox-rofi ~/.config/rofi/themes/gruvbox
+
+use `rofi-theme-selector` to select the theme
+
 get google chrome from AUR
 `git clone https://aur.archlinux.org/google-chrome.git`
 make the package with
@@ -223,10 +228,11 @@ install with prefix + I
 
 make sure ~/.config/nvim folder exists
 `git clone https://github.com/bitcode/dotfiles.git`
-stow zsh nvim tmux
+`stow zsh nvim tmux`
 
+### download SecList from github
+`git clone https://github.com/danielmiessler/SecLists.git`
  
-
 
 
 
