@@ -97,11 +97,11 @@ reboot
 
 # Post Installs
 
-### DWM
+### DWM Flexipatch
 
 `cd /usr/src/`
-`git clone git://git.suckless.org/dwm`
-`cd dwm`
+`git clone https://github.com/bakkeby/dwm-flexipatch.git`
+`cd dwm-flexipatch`
 `sudo make clean install`
 
 ### ST
@@ -233,7 +233,7 @@ make sure ~/.config/nvim folder exists
 ### download SecList from github
 `git clone https://github.com/danielmiessler/SecLists.git`
  
-
-
+### global npm packages
+npm i -g @remix-project/remixd
 
 
