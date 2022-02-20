@@ -236,4 +236,10 @@ make sure ~/.config/nvim folder exists
 ### global npm packages
 npm i -g @remix-project/remixd
 
+### rofi configuration for dwm
+`static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };`
+and 
+`{ MODKEY XK_d, spawn, {.v = roficmd } },`
+in config.h. ( The last one goes into `static Key keys[] = {...` )
+
 
