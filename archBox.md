@@ -111,6 +111,12 @@ reboot
 `cd st`
 `sudo make clean install`
 
+### Install python packages with python pip
+
+pip install -r /path/to/requirements.txt
+pip3 install pynvim --upgrade
+pip3 install openai
+
 ### rofi ( install is in basePacks )
 
 rofi config is in: `~/.config/rofi/config.rasi`
@@ -133,49 +139,15 @@ make the package with
 install downloaded file with 
 `pacman -U file_name`
 
-# Install Blackarch on top of Arch
-
-BlackArch Linux is compatible with existing/normal Arch installations. It acts as an unofficial user repository. Below you will find instructions on how to install BlackArch in this manner.
-
-# Run https://blackarch.org/strap.sh as root and follow the instructions.
-
-$ curl -O https://blackarch.org/strap.sh
-# Verify the SHA1 sum
-
-$ echo 46f035c31d758c077cce8f16cf9381e8def937bb strap.sh | sha1sum -c
-# Set execute bit
-
-$ chmod +x strap.sh
-# Run strap.sh
-
-$ sudo ./strap.sh
-# Enable multilib following https://wiki.archlinux.org/index.php/Official_repositories#Enabling_multilib and run:
-
-$ sudo pacman -Syu
-You may now install tools from the blackarch repository.
-# To list all of the available tools, run
-
-$ sudo pacman -Sgg | grep blackarch | cut -d' ' -f2 | sort -u
-# To install all of the tools, run
-
-$ sudo pacman -S blackarch
-# To install a category of tools, run
-
-$ sudo pacman -S blackarch-<category>
-# To see the blackarch categories, run
-
-$ sudo pacman -Sg | grep blackarch
-# Note - it maybe be necessary to overwrite certain packages when installing blackarch tools. If
-# you experience "failed to commit transaction" errors, use the --needed and --overwrite switches
-# For example:
-
-$ sudo pacman -Syyu --needed blackarch --overwrite='*'
-
 # Install Nerd Font
 
 `git clone https://github.com/ryanoasis/nerd-fonts.git`
 `cd nerd-font`
 `./install.sh`
+
+# NPM packages
+
+
 
 # NeoVim ( Install from build )
 
@@ -203,6 +175,8 @@ Install zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 Install vim-mode
 `https://github.com/softmoth/zsh-vim-mode.git`
+Install zsh_codex
+git clone https://github.com/tom-doerr/zsh_codex.git ~/.oh-my-zsh/custom/plugins/zsh_codex
 
 ### Tmux Plugin Manager TPM
 
@@ -234,12 +208,15 @@ make sure ~/.config/nvim folder exists
 `git clone https://github.com/danielmiessler/SecLists.git`
  
 ### global npm packages
-npm i -g @remix-project/remixd
+npm i -g @remix-project/remixd neovim
 
 ### rofi configuration for dwm
 `static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };`
 and 
 `{ MODKEY XK_d, spawn, {.v = roficmd } },`
 in config.h. ( The last one goes into `static Key keys[] = {...` )
+
+### things to do manually
+1. Install Tmux plugins manually by pressing C-prefix then shift + I
 
 
