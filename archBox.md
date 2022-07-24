@@ -22,7 +22,7 @@ code for SWAP partition is `8200`
 root size parittion is up to the User
 code for root partition is `8300` ( Linux filesystem )
 
-### Fourth Partition will be /home 
+### Fourth Partition will be /home
 
 all defaults will be fine
 
@@ -32,30 +32,30 @@ write changes with `w`
 
 We will be using `ext4` with the following commands
 
-EFI Partition  	
+EFI Partition
 `mkfs.vfat /dev/nvme1n1p1`
 
-SWAP Partition 
+SWAP Partition
 `mkswap /dev/nvme1n1p2`
 
 Activate SWAP Partition
 `swapon /dev/nvme1n1p2`
 
-Root Partition 
-`mkfs.ext4 /dev/nvme1n1p3` 
+Root Partition
+`mkfs.ext4 /dev/nvme1n1p3`
 
 Same for /home partition
 `mkfs.ext4 /dev/nvme1n1p4`
 
 ###Mount Partition
 
-root partition goes on /mnt 
+root partition goes on /mnt
 `mount /dev/nvme1n1p3 /mnt`
 
 create directories & mount boot
 `mkdir -p /mnt/boot/efi`
 
-then mount the boot drive 
+then mount the boot drive
 `mount /dev/nvme1n1p1 /mnt/boot/efi`
 
 create directory for the /home
@@ -72,16 +72,16 @@ now `lsblk` to double check your mount points
 
 `pacstrap /mnt base linux linux-firmware git vim intel-ucode`
 
-## Generate FileSystem Table 
+## Generate FileSystem Table
 
 `genfstab -U /mnt >> /mnt/etc/fstab`
 
-## Go into installation 
+## Go into installation
 
 `arch-chroot /mnt`
 
-look at fstab file with 
-`cat /etc/fstab` 
+look at fstab file with
+`cat /etc/fstab`
 
 creat user
 `useradd --create-home bit`
@@ -136,7 +136,7 @@ get google chrome from AUR
 `git clone https://aur.archlinux.org/google-chrome.git`
 make the package with
 `makepkg --syncdeps`
-install downloaded file with 
+install downloaded file with
 `pacman -U file_name`
 
 # Install Nerd Font
@@ -146,8 +146,6 @@ install downloaded file with
 `./install.sh`
 
 # NPM packages
-
-
 
 # NeoVim ( Install from build )
 
@@ -192,11 +190,12 @@ install with prefix + I
 `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
 ### Install ls-deluxe
+
 `cargo install --git https://github.com/Peltoche/lsd.git --branch master`
 
 ### Install Vim Plug
-`sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'`
+
+`sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'`
 
 ### download and install dot files
 
@@ -205,18 +204,41 @@ make sure ~/.config/nvim folder exists
 `stow zsh nvim tmux`
 
 ### download SecList from github
+
 `git clone https://github.com/danielmiessler/SecLists.git`
- 
+
 ### global npm packages
-npm i -g @remix-project/remixd neovim
+
+npm i -g @remix-project/remixd neovim bash-language-server pyright vscode-langservers-extracted typescript typescript-language-server emmet-ls
+
+### install Neovim Plugin Manager Packer
+
+`git clone --depth 1 https://github.com/wbthomason/packer.nvim\ ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
 
 ### rofi configuration for dwm
+
 `static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };`
-and 
+and
 `{ MODKEY XK_d, spawn, {.v = roficmd } },`
 in config.h. ( The last one goes into `static Key keys[] = {...` )
 
 ### things to do manually
+
 1. Install Tmux plugins manually by pressing C-prefix then shift + I
 
+### To see emojis in suckless
+
+remove libxft
+`sudo pacman -Rdd libxft`
+
+### install libxft-bgra and lib32-libxft-bgra
+
+cd /tmp
+git clone https://aur.archlinux.org/lib32-libxft-bgra.git
+makepkg -sri
+if it fails to validate import key
+`gpg --recv-key <key>`
+
+### Manually install lua-language-server
+https://github.com/sumneko/lua-language-server
 
